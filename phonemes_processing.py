@@ -56,11 +56,17 @@ ve = nssp.alloc().init()
 # "com.apple.speech.synthesis.voice.Whisper",
 # "com.apple.speech.synthesis.voice.Zarvox"
 
-# ve.setVoice_("com.apple.speech.synthesis.voice.Zarvox")
+#ve.setVoice_("com.apple.speech.synthesis.voice.Zarvox")
 print file_content
-ve.startSpeakingString_(file_content)
+#ve.startSpeakingString_(file_content)
 
 time.sleep(1)
 while ve.isSpeaking():
     time.sleep(1)
+
+#for token in tokens:
+#    ve.startSpeakingString_(token)
+#    time.sleep(1)
+#    while ve.isSpeaking():
+#        time.sleep(1)
 

@@ -11,3 +11,4 @@ for token in tokens:
     for entry in entries:
         if token == entry[0]:
             print entry
+            break
