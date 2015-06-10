@@ -132,7 +132,7 @@ PhonemeToMouth={'AA':'blair_o.jpg',
 'V':'blair_f_v_d_th.jpg',
 'Y':'blair_c_d_g_k_n_r_s_th_y_z.jpg',
 'ZH':'blair_c_d_g_k_n_r_s_th_y_z.jpg',
-'Z':'blair_c_d_g_k_n_r_s_th_y_z.j'}
+'Z':'blair_c_d_g_k_n_r_s_th_y_z.jpg'}
 
 #
 # actualImg = mouths.itervalues().next()

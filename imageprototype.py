@@ -5,9 +5,20 @@ import time
 import sys
 import nltk
 import phonemes
+import thread
+from  AppKit import NSSpeechSynthesizer
+
+#Defines
+timePerPhoneme = 0.2
 
 # called by each thread
 def speak_word(word, waittime):
+    nssp = NSSpeechSynthesizer
+    ve = nssp.alloc().init()
+    ve.setVoice_("com.apple.speech.synthesis.voice.Alex")
+    ve.startSpeakingString_(word)
+
+    time.sleep(waittime)
     return
 
 
@@ -35,7 +46,8 @@ print phonemes.PhonemeToMouth
 ## For each mouth you should put a refering mouth to show
 ## do the double check
 for word in TextToSpeech:
-
+    cv2.imshow('window', phonemes.mouths['blair_rest.jpg'])
+    cv2.waitKey(1)
     # Get the right list of mouths
 
     MouthsToShow = []
@@ -45,13 +57,17 @@ for word in TextToSpeech:
                 MouthsToShow.append(value)
 
     #Debug!
-    print 'Mouths to Show: ' + MouthsToShow
+    print MouthsToShow
 
     # Call co-routine to speak
+    try:
+        thread.start_new_thread(speak_word, (word[0], len(word[1]) * timePerPhoneme ) )
+    except:
+        print "Error: unable to start thread for audio =/"
 
     #Show Mouths
     for mouth in MouthsToShow:
         img = phonemes.mouths[mouth]
         cv2.imshow('window', img)
         cv2.waitKey(1)
-        time.sleep(0.2)
+        time.sleep(timePerPhoneme)
